@@ -1,4 +1,6 @@
+# Please remember, this is a fork of Utility, and i was hereby allowed to continue it.
 
+ Thanks to Auto, (liablelua).
 # How to Include BetterUtility?
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/Utility.lua"))()
