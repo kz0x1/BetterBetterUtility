@@ -1,10 +1,12 @@
 local startgetTime = os.clock() or tick()
+assert(identifyexecutor, "Executor name not found!")
+ 
+originalidentifyexecutor = identifyexecutor()
 
+ assert(true, warn("Running BetterUtility v3.0.3, Executor: "..identifyexecutor()))
  identifyexecutor = newcclosure(function()
 		return "BetterUtility", "3.0.2"
 end)
-
-assert(identifyexecutor, "Executor name not found!") -- Or we can instead just make it ourselves?
 
  function LoadIndependencies() -- Will be needed.
 
