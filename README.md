@@ -1,9 +1,9 @@
-Utility v3.0.0 is finally out with new Documentation.
+
 # How to Include BetterUtility?
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/Utility.lua"))()
 ```
-That way you can use unc(), iy(), etc. In the same script! (If your using shit like Solara)
+That way you can use unc(), iy(), etc. In the same script! [Using things like Solara, and other more things.]
 # What Executors Support Utility
 Known List:
 - ✅ Celery (100%, Undetected)
@@ -14,6 +14,7 @@ If you find an Executor that works with Utility, let me know!
 Rewritten Utility Documentation! (For every function.) (Oh god.)
 ## Hooking Functions
 These are for local scripts only.<br>Say you want to modify how your Inventory looks Client-Sided.<br>Lets get the info from the Remote and Trigger an update.<br>
+
 ```lua
 hook(Remotes.InvUpd, function(...)
     for i, v in pairs(...) do
@@ -149,4 +150,4 @@ local Logs = logs(true)
 runtests()
 ```
 # Donate!
-$auto445 on Cash App
+$auto445 on Cash App -- Raz here, I'm keeping this for the sake of our boy auto, who has left the roblox exploiting community.
