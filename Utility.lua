@@ -1,12 +1,12 @@
 local startgetTime = os.clock() or tick()
 
  identifyexecutor = newcclosure(function()
-		return "BetterUtility", "1.0.0"
+		return "BetterUtility", "3.0.2"
 end)
 
 assert(identifyexecutor, "Executor name not found!") -- Or we can instead just make it ourselves?
 
-
+ function LoadIndependencies() -- Will be needed.
 
 local printEnabled = true
 local executorname = identifyexecutor() -- alright so we'll first begin by putting more aliases
@@ -14,6 +14,10 @@ local executorname = identifyexecutor() -- alright so we'll first begin by putti
  whatexecutoristhis = identifyexecutor
  executorName = identifyexecutor
  Executorname = identifyexecutor
+
+ end 
+
+ LoadIndependencies()
 
 
 local Players = game:GetService("Players")
@@ -45,14 +49,21 @@ do -- Print Utility Information
         "Sashaa169 (centerepic)"
     }
 
-    local Version = "v3.0.0"
+    local Version = "v3.0.3"
 
     local changeLog = {
+
+        ["v3.0.3"] = {
+              "Minor Spelling Mistake Fixes", 
+              "Added a function to load independencies automatically."
+        },
+
 		["v3.0.2"]  = {
 			"Code Cleanup",
 			 "I am now in charge of Utility thanks to liablelua",
 			"Added identifyexecutor and a shitty hookfunction"
 		},
+
 	    ["v3.0.1"] = {
 		"Minor update to hooks."
 	    },
@@ -84,7 +95,7 @@ do -- Print Utility Information
 
     dbgprint(
         "Utility Stable " .. Version .. "\n",
-        "Contact liablelua for any bugs or issues\n",
+        "Contact razzoni for any bugs or issues\n",
         "Contributors:\n",
         table.concat(Contributors, "\n"),
         "\n" .. changeLogString
@@ -217,7 +228,7 @@ else
 
 hookfunction = newcclosure(function(a, b) -- C Closures are the best
 		b = a -- Shittiest, Delectablest, fucking method to use
-end
+end)
    
     
     scanall = function(f : Instance)
@@ -551,6 +562,8 @@ end
             {headshot, "Player Headshots"},
             {logs, "Utility Logger"},
             {speed, "Humanoid Properties"},
+            {jump, "Humanoid Properties x2"},
+            {swim, "Humanoid Properties x3"}
             {unc, "UNC Tests"},
             {iy, "Infinite Yield"},
             {fromhex, "Hex Conversions"}
