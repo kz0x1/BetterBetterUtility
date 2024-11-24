@@ -157,8 +157,8 @@ end
 -- Don't mind "getTime" it's used for logging certain things and whatnot.
 -- NukeUtility() -- Uncomment if your testing Utility Source
 
-local utilityVersion = "stable-dc772e43300b07754f4739b746938a15"
-local update = string.gsub(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/version_update.txt"), "^%s*(.-)%s*$", "%1")
+local utilityVersion = "stable-dc333e86145678994120-661_HASH"
+local update = string.gsub(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/version_update.txt"), "^%s*(.-)%s*$", "%1")
 
 if update ~= utilityVersion then
     table.insert(getgenv().UtilityStorage, getTime() .. ": Utility has a new update (" .. update .. ") and needs to be downloaded soon.")
