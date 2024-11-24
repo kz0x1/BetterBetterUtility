@@ -1,7 +1,7 @@
 Utility v3.0.0 is finally out with new Documentation.
-# How to Include Utility?
+# How to Include BetterUtility?
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/Utility.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/Utility.lua"))()
 ```
 That way you can use unc(), iy(), etc. In the same script! (If your using shit like Solara)
 # What Executors Support Utility
