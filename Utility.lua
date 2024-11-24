@@ -1,20 +1,26 @@
-local startgetTime = os.clock()
+local startgetTime = os.clock() or tick()
 
-assert(identifyexecutor, "Executor name not found!")
+ identifyexecutor = newcclosure(function()
+		return "BetterUtility", "1.0.0"
+end)
 
-if string.find(identifyexecutor(), "Wave") or getidentity() <= 6 then
-    return error("Utility has been blocked for Wave and Level 6 and under executors.")
-end
+assert(identifyexecutor, "Executor name not found!") -- Or we can instead just make it ourselves?
+
+
 
 local printEnabled = true
+local executorname = identifyexecutor() -- alright so we'll first begin by putting more aliases
+ Identifyexecutor = identifyexecutor
+ whatexecutoristhis = identifyexecutor
+ executorName = identifyexecutor
+ Executorname = identifyexecutor
 
-local supportedRobloxVersion = "0.636.1.6360627"
-local executorName : string = identifyexecutor()
-local Players : Players = game:GetService("Players")
-local LocalPlayer : Player = Players.LocalPlayer
-local CoreGui : CoreGui | PlayerGui = gethui() or game:GetService("CoreGui") or Players.LocalPlayer:WaitForChild("PlayerGui")
-local Character : Model = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
-local Humanoid : Humanoid = Character:WaitForChild("Humanoid")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local CoreGui, PlayerGui = game:FindService("CoreGui"), LocalPlayer.PlayerGui
+local Character = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
 
 LocalPlayer.CharacterAdded:Connect(function(char : Model)
     Character = char
@@ -23,18 +29,18 @@ end)
 
 assert(executorName, "Executor not found!")
 
-local function dbgprint(...)
-    rconsoleprint("(Utility) [PRINT]: ".. ...)
+local function dbgprint(message)
+    assert(true, print("(Utility) [PRINT]: "..message))
 end
 
-local function dbgwarn(...)
-    rconsoleprint("(Utility) [WARNING]: ".. ...)
+local function dbgwarn(message)
+    assert(true, warn("(Utility) [WARNING]: "..message))
 end
 
 do -- Print Utility Information
     local Contributors = {
         "Trax (traxxy123)",
-        "RazAPIx64.dll (razzoni)",
+        "RazAPIx64.dll (razzoni)", -- that's me by the way yes the Mr RazAPI guy
         "xyzkade (xyzkade)",
         "Sashaa169 (centerepic)"
     }
@@ -42,6 +48,11 @@ do -- Print Utility Information
     local Version = "v3.0.0"
 
     local changeLog = {
+		["v3.0.2"]  = {
+			"Code Cleanup",
+			 "I am now in charge of Utility thanks to liablelua",
+			"Added identifyexecutor and a shitty hookfunction"
+		},
 	    ["v3.0.1"] = {
 		"Minor update to hooks."
 	    },
@@ -80,27 +91,7 @@ do -- Print Utility Information
     )
 end
 
-do -- Load executor-specific patches
-
-    local executorPatches = {
-        ["Celery"] = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/getCeleryVersion.lua"))()
-
-            if getCeleryVersion() == "2.0.9" or version() == "0.636.1.6360627" then
-                dbgwarn("⚠️ You are using an Unstable Celery Version (v2.0.9)")
-                dbgprint("✅ Applying cloneref patch to environment.")
-                cloneref = function(e) return e end
-            end
-
-            dbgprint("👽 Running Celery v" .. getCeleryVersion())
-        end
-    }
-
-    if executorPatches[executorName] then
-        executorPatches[executorName]()
-    else
-        dbgwarn("⚠️ No patches available for your executor, script may not work as intended.")
-    end
+-- Removed useless celery patch
 
 end
 
@@ -122,10 +113,6 @@ do -- Save Instance Patch
 end
 
 dbgprint("🛠️ Running Roblox Version: v" .. version())
-
-if version() ~= supportedRobloxVersion then
-    warn("⚠️ Utility may be patched for this Roblox Update, wait for an update on Utility's end.")
-end
 
 NukeUtility = function()
     getgenv().UtilityLoaded = nil
@@ -226,6 +213,12 @@ else
             end
         end
     end
+
+
+hookfunction = newcclosure(function(a, b) -- C Closures are the best
+		b = a -- Shittiest, Delectablest, fucking method to use
+end
+   
     
     scanall = function(f : Instance)
         table.insert(getgenv().UtilityStorage, getTime()..": Scanning, "..f.Name..".")
@@ -526,11 +519,15 @@ else
         loadstring(game:HttpGet("https://raw.githubusercontent.com/unified-naming-convention/NamingStandard/main/UNCCheckEnv.lua"))()
     end
 
+	unctest = unc -- Adding aliases
+
     iy = function()
         task.spawn(function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
         end)
     end
+
+	infyield = iy
 
     fromhex = function(str : string)
         return str:gsub('..', function(cc) return string.char(tonumber(cc, 16)) end)
