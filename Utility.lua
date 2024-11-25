@@ -59,7 +59,8 @@ local function call(konstantType: string, scriptPath: Script | ModuleScript | Lo
     last_call = os.clock()
     
     if (httpResult.StatusCode ~= 200) then
-        return `-- Error occured while requesting the API, error:\n\n--[[\n{httpResult.Body}\n--]]`
+        return -- `Error occured while requesting the API, error:\n\n--[[\n{httpResult.Body}\n--]]`
+	-- fixed an error here, it was `--, supposed to be --`
     else
         return httpResult.Body
     end
@@ -157,12 +158,17 @@ do -- Print Utility Information
         "Trax (traxxy123)",
         "RazAPIx64.dll (razzoni)", -- that's me by the way yes the Mr RazAPI guy
         "xyzkade (xyzkade)",
-        "Sashaa169 (centerepic)"
+        "Sashaa169 (centerepic)",
+	"kz (kz0x1)" -- self advertisement
     }
 
     local Version = "v3.0.4"
 
     local changeLog = {
+
+	['v3.0.4.1'] = {
+	    "fix errors and many things"
+	}
 
         ["v3.0.4"] = {
             "Added a Decompiler using Konstant (BetAPI.LoadDecompiler, BetterUtility.LoadDecompiler)",
