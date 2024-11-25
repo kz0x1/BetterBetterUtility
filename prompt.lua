@@ -10,7 +10,7 @@ local TextButton2 = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local UISizeConstraint = Instance.new("UISizeConstraint")
 
-prompt.Name = "prompt"
+prompt.Name = math.random(100,100000) --"prompt"
 prompt.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 prompt.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -48,7 +48,7 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
 
-TextLabel2.Name = "TextLabel2"
+TextLabel2.Name = math.random(100,100000) --"TextLabel2"
 TextLabel2.Parent = Frame
 TextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
 TextLabel2.BackgroundTransparency = 1
@@ -76,7 +76,7 @@ TextButton.TextSize = 14
 
 UICorner_2.Parent = TextButton
 
-TextButton2.Name = "TextButton2"
+TextButton2.Name = math.random(100,100000) --"TextButton2"
 TextButton2.Parent = Frame
 TextButton2.BackgroundColor3 = Color3.new(0.141176, 0.141176, 0.141176)
 TextButton2.BackgroundTransparency = 0.5
