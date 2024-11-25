@@ -1,14 +1,16 @@
 -- Local Remote Viewer v1.0.2
-assert(BetterUtility, "BetterUtility is not loaded as a table or string, please load BetterUtility.")
+-- kz: fixed spelling mistakes and fake loading
+assert(BetterUtility, "BetterBetterUtility is not loaded as a table or string, please load BetterUtility.")
 
-.
+-- why was this here
+-- .
 loadstring(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/Utility.lua"))()
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "_xpluv's rviewer", HidePremium = false, SaveConfig = false, ConfigFolder = "rspy"})
 
 local Tab = Window:MakeTab({
-	Name = "Remote Viewer",
+	Name = "BBU - Remote Viewer",
 	Icon = "rbxassetid://10851817259",
 	PremiumOnly = false
 })
@@ -18,14 +20,13 @@ local Section = Tab:AddSection({
 })
 
 -- scan everything (ez just added to Utility)
-
+-- SOMEONE added a fake loading...
+print("[BBU] Scanning for remotes...")
 scanall(game.ReplicatedStorage)
 
-print("Scanning all")
+--wait(2)
 
-wait(2)
-
-print("Got all")
+print("[BBU] Got all Remotes.")
 
 -- remote sigma
 
@@ -34,16 +35,16 @@ for i = 1, #_G.Remotes do
 	    Name = _G.Remotes[i].Name,
 	    Callback = function()
       		spy = function()
-      		    notification("spying on remote now.",1)
-      		    hook(_G.Remotes[i], function(args) print(args) notification("check console for ".._G.Remotes[i].Name.."'s response",2) end)
+      		    notification("Spying on remotes like a spy!",1)
+      		    hook(_G.Remotes[i], function(args) print(args) notification("Check console for ".._G.Remotes[i].Name.."'s response.",2) end)
       		end
       		
       		unspy = function()
-      		    notification("unspying on remote now.",1)
+      		    notification("No longer spying remotes.",1)
       		    unhook(_G.Remotes[i])
       		end
       		
-      		prompt("Spy on this Remote?", "Cancel", "Confirm", unspy, spy)
+      		prompt("Spy on this RemoteEvent?", "No", "Hell Yeah!", unspy, spy)
   	    end    
     })
 end
