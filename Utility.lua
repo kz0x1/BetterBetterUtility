@@ -7,10 +7,8 @@ getTime = function()
     local second = CurgetTime.sec
     return "["..hour..":"..minute..":"..second.."]"
 end
-
-assert(identifyexecutor, "Executor name not found!")
  
-originalidentifyexecutor = identifyexecutor()
+
 
  assert(true, warn("Running BetterUtility v3.0.4, Executor: "..identifyexecutor()))
  identifyexecutor = newcclosure(function()
