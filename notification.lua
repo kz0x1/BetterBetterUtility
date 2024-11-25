@@ -6,11 +6,11 @@ local TextLabel = Instance.new("TextLabel")
 local TextLabel2 = Instance.new("TextLabel")
 local UISizeConstraint = Instance.new("UISizeConstraint")
 
-notif.Name = "notif"
+notif.Name = math.random(100,100000) --"notif"
 notif.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 notif.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-Frame2.Name = "Frame2"
+Frame2.Name = math.random(100,100000) --"Frame2"
 Frame2.Parent = notif
 Frame2.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame2.BackgroundColor3 = Color3.new(0.227451, 0.227451, 0.227451)
@@ -44,7 +44,7 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
 
-TextLabel2.Name = "TextLabel2"
+TextLabel2.Name = math.random(100,100000) --"TextLabel2"
 TextLabel2.Parent = Frame2
 TextLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
 TextLabel2.BackgroundTransparency = 1
