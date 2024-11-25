@@ -11,6 +11,7 @@ Known List:
 - ✅ Wave (100%, Undetected)
 - ✅ Solara (33%, Detected)
 - ✅ Xeno/Xenosploits (idk)
+
 If you find an Executor that works with Utility, let me know!
 # Documentation
 Rewritten Utility Documentation! (For every function.) (Oh god.) (thanks raz)
