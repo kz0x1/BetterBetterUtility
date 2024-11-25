@@ -1,9 +1,8 @@
-# Please remember, this is a fork of Utility, and i was hereby allowed to continue it.
+## FORK of a fork of utility [betterutility] by auto man [forked by raz] [forked by kz]
 
- Thanks to Auto, (liablelua).
 # How to Include BetterUtility?
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/Utility.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kz0x1/BetterBetterUtility/main/Utility.lua"))()
 ```
 That way you can use unc(), iy(), etc. In the same script! [Using things like Solara, and other more things.]
 # What Executors Support Utility
@@ -13,7 +12,7 @@ Known List:
 - ✅ Solara (33%, Detected)
 If you find an Executor that works with Utility, let me know!
 # Documentation
-Rewritten Utility Documentation! (For every function.) (Oh god.)
+Rewritten Utility Documentation! (For every function.) (Oh god.) (thanks raz)
 ## Hooking Functions
 These are for local scripts only.<br>Say you want to modify how your Inventory looks Client-Sided.<br>Lets get the info from the Remote and Trigger an update.<br>
 
