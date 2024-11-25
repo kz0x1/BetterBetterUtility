@@ -1,6 +1,6 @@
 -- Local Remote Viewer v1.0.2
 -- kz: fixed spelling mistakes and fake loading
-assert(BetterUtility, "BetterBetterUtility is not loaded as a table or string, please load BetterUtility.")
+assert(BetterUtility, "BetterBetterUtility is not loaded as a table or string, please load it.")
 
 -- why was this here
 -- .
