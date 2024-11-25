@@ -1,15 +1,16 @@
 ## FORK of a fork of utility [betterutility] by auto man [forked by raz] [forked by kz]
 
-# How to Include BetterUtility?
+# How to Include BetterBetterUtility?
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/kz0x1/BetterBetterUtility/main/Utility.lua"))()
 ```
-That way you can use unc(), iy(), etc. In the same script! [Using things like Solara, and other more things.]
+That way you can use `unc()`, `iy()`, etc. In the same script! [Using things like Solara, and other more things.]
 # What Executors Support Utility
 Known List:
 - ✅ Celery (100%, Undetected)
 - ✅ Wave (100%, Undetected)
 - ✅ Solara (33%, Detected)
+- ✅ Xeno/Xenosploits (idk)
 If you find an Executor that works with Utility, let me know!
 # Documentation
 Rewritten Utility Documentation! (For every function.) (Oh god.) (thanks raz)
