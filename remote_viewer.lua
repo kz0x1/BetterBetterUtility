@@ -4,10 +4,10 @@ assert(BetterUtility, "BetterBetterUtility is not loaded as a table or string, p
 
 -- why was this here
 -- .
-loadstring(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/Utility.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kz0x1/BetterBetterUtility/main/Utility.lua"))()
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-local Window = OrionLib:MakeWindow({Name = "_xpluv's rviewer", HidePremium = false, SaveConfig = false, ConfigFolder = "rspy"})
+local Window = OrionLib:MakeWindow({Name = "_xpluv's rviewer", HidePremium = false, SaveConfig = false, ConfigFolder = "bbu-rspy"})
 
 local Tab = Window:MakeTab({
 	Name = "BBU - Remote Viewer",
