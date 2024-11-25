@@ -121,7 +121,7 @@ print(Sigma)
 ## Misc. Functions
 ### Key
 ```lua
-isKey = key("votedonaldtrump","https://raw.githubusercontent.com/liablelua/Utility/main/keyTest.txt")
+isKey = key("donaldtrumpwon","https://raw.githubusercontent.com/kz0x1/BetterBetterUtility/main/keyTest.txt")
 if isKey then
   print("key")
 end
