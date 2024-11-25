@@ -26,7 +26,8 @@ BetterUtility.WalkSpeed = function(speed)
     end
 end
 
-BetterUtility.
+BetterUtility.HttpPost = game.HttpPostAsync
+BetterUtility.HttpGet = game.HttpGetAsync
 
 BetterUtility.Speed = BetterUtility.WalkSpeed
 BetterUtility.SetSpeed = BetterUtility.WalkSpeed
