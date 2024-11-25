@@ -47,12 +47,38 @@ local executorname = identifyexecutor() -- alright so we'll first begin by putti
 
  LoadIndependencies()
 
+-- Usual init
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local CoreGui, PlayerGui = game:FindService("CoreGui"), LocalPlayer.PlayerGui
 local Character = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
 local Humanoid = Character:WaitForChild("Humanoid")
+local Workspace = game:FindService("Workspace") or game.Workspace
+local RobloxWorkspace = game:FindService("Workspace") or game.Workspace
+local Players = game:FindService("Players") or game.Players
+local RobloxPlayers = game:FindService("Players") or game.Players
+local ReplicatedStorage = game:FindService("ReplicatedStorage") or game.ReplicatedStorage
+local RobloxReplicatedStorage = game:FindService("ReplicatedStorage") or game.ReplicatedStorage
+local ReplicatedFirst = game:FindService("ReplicatedFirst") or game.ReplicatedFirst
+local Lighting = game:FindService("Lighting") or game.Lighting
+local RobloxLighting = game:FindService("Lighting") or game.Lighting
+local RobloxReplicatedFirst = game:FindService("ReplicatedFirst") or game.ReplicatedFirst
+local CoreGui = game:FindService("CoreGui") or game.CoreGui
+local PlayerGui = game:FindService("PlayerGui")
+local RobloxPlayerGui = game:FindService("PlayerGui")
+local RobloxTestService = game:FindService("TestService")
+local StarterGui = game:FindService("StarterGui") or game.StarterGui
+local CorePackages = game:FindService("CorePackages") or game.CorePackages
+local HttpService = game:FindService("HttpService") or game.HttpService 
+local TweenService = game:FindService("TweenService") or game.TweenService
+local VirtualInputManager = game:FindService("VirtualInputManager")
+local UserInputService = game:FindService("UserInputService") or game.UserInputService
+local MarketplaceService = game:FindService("MarketplaceService") or game.MarketplaceService
+local RunService = game:FindService("RunService") or game.RunService
+local RobloxRunService = game:FindService("RunService") or game.RunService
+local LogService = game:FindService("LogService") or game.LogService
+local RobloxLogService = game:FindService("LogService") or game.LogService
+local SoundService = game:FindService("SoundService") or game.SoundService
+local LocalPlayer = Players.LocalPlayer
+local RobloxTestService = cloneref(game:FindService("TestService") or game.TestService)
 
 LocalPlayer.CharacterAdded:Connect(function(char : Model)
     Character = char
@@ -621,8 +647,6 @@ end)
     getgenv().BetterUtilityStorage = true
     
 -- Removed anti-skid measures which actually bugged out
-    
-    dbgprint"BetterUtility loaded."
 
     runtests()
 
