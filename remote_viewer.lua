@@ -1,5 +1,7 @@
 -- Local Remote Viewer v1.0.2
+assert(BetterUtility, "BetterUtility is not loaded as a table or string, please load BetterUtility.")
 
+.
 loadstring(game:HttpGet("https://raw.githubusercontent.com/liablelua/Utility/main/Utility.lua"))()
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
