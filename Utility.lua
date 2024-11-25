@@ -10,9 +10,9 @@ end
  
 
 
- assert(true, warn("Running BetterUtility v3.0.4, Executor: "..identifyexecutor()))
+ assert(true, warn("Running BetterBetterUtility v3.0.4.1, Executor: "..identifyexecutor()))
  identifyexecutor = newcclosure(function()
-		return "BetterUtility", "3.0.0"
+		return "BetterBetterUtility", "3.0.4.1"
 end)
 
 local BetterUtility = {}
@@ -41,7 +41,7 @@ local function call(konstantType: string, scriptPath: Script | ModuleScript | Lo
     local success: boolean, bytecode: string = pcall(getscriptbytecode, scriptPath)
 
     if (not success) then
-        return `-- Failed to get script bytecode, error:\n\n--[[\n{bytecode}\n--]]`
+        return --` Failed to get script bytecode, error:\n\n--[[\n{bytecode}\n--]]`
     end
 
     local time_elapsed = os.clock() - last_call
