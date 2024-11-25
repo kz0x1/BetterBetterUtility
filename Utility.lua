@@ -1,4 +1,13 @@
 local startgetTime = os.clock() or tick()
+
+getTime = function()
+    local CurgetTime = os.date("!*t")
+    local hour = CurgetTime.hour
+    local minute = CurgetTime.min
+    local second = CurgetTime.sec
+    return "["..hour..":"..minute..":"..second.."]"
+end
+
 assert(identifyexecutor, "Executor name not found!")
  
 originalidentifyexecutor = identifyexecutor()
@@ -7,6 +16,22 @@ originalidentifyexecutor = identifyexecutor()
  identifyexecutor = newcclosure(function()
 		return "BetterUtility", "3.0.0"
 end)
+
+local BetterUtility = {}
+BetAPI = BetterUtility
+BetterUtility.WalkSpeed = function(speed)
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.WalkSpeed = speed
+    end
+end
+
+BetterUtility.
+
+BetterUtility.Speed = BetterUtility.WalkSpeed
+BetterUtility.SetSpeed = BetterUtility.WalkSpeed
+BetterUtility.speed = BetterUtility.WalkSpeed
+
 
  function LoadIndependencies() -- Will be needed.
 
@@ -33,14 +58,25 @@ LocalPlayer.CharacterAdded:Connect(function(char : Model)
     Humanoid = char:WaitForChild("Humanoid")
 end)
 
+local executorName = identifyexecutor()
 assert(executorName, "Executor not found!")
 
-local function dbgprint(message)
-    assert(true, print("(Utility) [PRINT]: "..message))
+
+dbgprint = function(message1)
+    assert(true, print("(BetterUtility): "..message1))
 end
 
-local function dbgwarn(message)
-    assert(true, warn("(Utility) [WARNING]: "..message))
+dbgwarn = function(message2)
+    assert(true, warn("(BetterUtility): "..message2))
+end
+
+getfunctionaddress = function(func)
+    if type(func) == "function" then
+        local address = tostring(func):gsub("function: 0x", "")
+            dbgprint("[GET_FUNCTION_ADDRESS]: Address: " .. address)
+    else
+        dbgprint("[GET_FUNCTION_ADDRESS]: Function does not exist")
+    end
 end
 
 do -- Print Utility Information
@@ -63,15 +99,15 @@ do -- Print Utility Information
 		["v3.0.2"]  = {
 			"Code Cleanup",
 			 "I am now in charge of Utility thanks to liablelua",
-			"Added identifyexecutor and a shitty hookfunction"
+			 "Added identifyexecutor and a shitty hookfunction"
 		},
 
 	    ["v3.0.1"] = {
-		"Minor update to hooks."
+		   "Minor update to hooks."
 	    },
             ["v3.0.0"] = {
-	        "Code cleanup",
-		"A lot of shit, look up the YT release announcement."
+	          "Code cleanup",
+		      "A lot of shit, look up the YT release announcement."
             },
 	    ["v2.2.0"] = {
 		    "Cleaned up and refactored code.",
@@ -96,7 +132,7 @@ do -- Print Utility Information
     end
 
     dbgprint(
-        "Utility Stable " .. Version .. "\n",
+        "BetterUtility Stable " .. Version .. "\n",
         "Contact razzoni for any bugs or issues\n",
         "Contributors:\n",
         table.concat(Contributors, "\n"),
@@ -106,13 +142,12 @@ end
 
 -- Removed useless celery patch
 
-end
 
 -- Synapse Save Instance boogaloo
 
 local Params = {
     RepoURL = "https://raw.githubusercontent.com/luau/SynSaveInstance/main/",
-    SSI = "saveinstance",
+    SSI = "saveinstance"
 }
 
 local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
@@ -127,15 +162,15 @@ end
 
 dbgprint("🛠️ Running Roblox Version: v" .. version())
 
-NukeUtility = function()
-    getgenv().UtilityLoaded = nil
-    getgenv().UtilityStorage = nil
+DisableUtility = function()
     getgenv().Hooks = nil
-    table.clear(getgenv().Remotes)
+    getgenv().Remotes = nil
+     task.wait(0.4)
     getgenv().Remotes = {}
     getTime = nil
     hook = nil
     unhook = nil
+    antiskid = nil
     remotescan = nil
     key = nil
     prompt = nil
@@ -155,39 +190,33 @@ getTime = function()
 end
 
 -- Don't mind "getTime" it's used for logging certain things and whatnot.
--- NukeUtility() -- Uncomment if your testing Utility Source
+ DisableUtility() -- Uncomment if your testing Utility Source
+
 
 local utilityVersion = "stable-dc333e86145678994120-661_HASH"
 local update = string.gsub(game:HttpGet("https://raw.githubusercontent.com/RazAPI/BetterUtility/main/version_update.txt"), "^%s*(.-)%s*$", "%1")
 
+
 if update ~= utilityVersion then
-    table.insert(getgenv().UtilityStorage, getTime() .. ": Utility has a new update (" .. update .. ") and needs to be downloaded soon.")
+    table.insert(getgenv().BetterUtilityStorage, getTime() .. ": Utility has a new update (" .. update .. ") and needs to be downloaded soon.")
 end
 
-if getgenv().UtilityLoaded ~= nil then
+getgenv().BetterUtilityStorage = getgenv().BetterUtilityStorage or {}
 
-    if typeof(getgenv().UtilityLoaded) == "boolean" then
-        if getgenv().UtilityLoaded then
-            table.insert(getgenv().UtilityStorage, getTime()..": Utility has already been loaded, don't execute again.")
-        else
-            table.insert(getgenv().UtilityStorage, getTime()..": Utility is loading, don't execute again.")
-        end
-    else
-        table.insert(getgenv().UtilityStorage, getTime()..": Utility has failed to load.")
-    end
+getgenv().BetterUtilityLoaded = "boolean"
 
-else
     local AntiTamper = {}
-    getgenv().UtilityLoaded = false
-    getgenv().UtilityStorage = {}
+    getgenv().BetterUtilityLoaded = false
+    getgenv().BetterUtilityStorage = getgenv().BetterUtilityStorage or {}
+
     getgenv().Hooks = {}
     getgenv().Remotes = {}
     
-    table.insert(getgenv().UtilityStorage, getTime()..": Utility started.")
+
 
     hook = function(rem, func)
         if getgenv().Hooks[rem.Name] == nil then
-            table.insert(getgenv().UtilityStorage, getTime()..": Used hook on "..rem.Name..".")
+            table.insert(getgenv().BetterUtilityStorage, getTime()..": Used hook on "..rem.Name..".")
             local success, connection = pcall(function()
                 return rem.OnClientEvent:Connect(func)
             end)
@@ -201,23 +230,23 @@ else
 
     unhook = function(rem)
         if getgenv().Hooks[rem.Name] then
-            table.insert(getgenv().UtilityStorage, getTime()..": Removed hook on "..rem.Name..".")
+            table.insert(getgenv().BetterUtilityStorage, getTime()..": Removed hook on "..rem.Name..".")
             getgenv().Hooks[rem.Name]:Disconnect()
             getgenv().Hooks[rem.Name] = nil
         end
     end
 
     remotescan = function(scan : Instance, deep : boolean)
-        table.insert(getgenv().UtilityStorage, getTime()..": Used Remote Scan on "..scan.Name..".")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Used Remote Scan on "..scan.Name..".")
         local Children = scan:GetChildren()
 
         for _, b : Instance in next, Children do
-            table.insert(getgenv().UtilityStorage, getTime() .. ": Scanned: " ..b.Name.. ".")
+            table.insert(getgenv().BetterUtilityStorage, getTime() .. ": Scanned: " ..b.Name.. ".")
             dbgprint(b.Name .. " | " .. b.ClassName)
             if deep ~= nil then
                 if typeof(deep) == "boolean" then
                     for _, d in b:GetChildren() do
-                        table.insert(getgenv().UtilityStorage, getTime()..": Scanned: "..d.Name..".")
+                        table.insert(getgenv().BetterUtilityStorage, getTime()..": Scanned: "..d.Name..".")
                         dbgprint(d.Name .. " | " .. d.ClassName)
                     end
                 else
@@ -234,7 +263,7 @@ end)
    
     
     scanall = function(f : Instance)
-        table.insert(getgenv().UtilityStorage, getTime()..": Scanning, "..f.Name..".")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Scanning, "..f.Name..".")
 
         for _, v : Instance in next, f:GetDescendants() do
             if v:IsA("RemoteEvent") and v.Parent:IsA("Folder") then
@@ -245,7 +274,7 @@ end)
     end
     
     key = function(keyInput, keyWeb)
-        table.insert(getgenv().UtilityStorage, getTime()..": Key system loaded.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Key system loaded.")
 
         local theKey = string.gsub(game:HttpGet(keyWeb), "^%s*(.-)%s*$", "%1")
 
@@ -257,7 +286,7 @@ end)
     end
     
     prompt = function(promptText : string, cancelText : string, acceptText : string, cancelFunction : any, acceptFunction : any)
-        table.insert(getgenv().UtilityStorage, getTime()..": Prompt loaded.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Prompt loaded.")
 
         local CancelButton = Instance.new("TextButton")
         local AcceptButton = Instance.new("TextButton")
@@ -360,7 +389,7 @@ end)
     end
     
     notification = function(text : string, notificationTime : number)
-        table.insert(getgenv().UtilityStorage, getTime() .. ": Notification loaded.")
+        table.insert(getgenv().BetterUtilityStorage, getTime() .. ": Notification loaded.")
 
 		local Notification = Instance.new("ScreenGui")
 		
@@ -425,23 +454,23 @@ end)
     end
 
     registerTampers = function(variables)
-        table.insert(getgenv().UtilityStorage, getTime()..": Registered tamper variables.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Registered tamper variables.")
         for i, v in variables do
             AntiTamper[i] = v
         end
     end
 
     updateTamper = function(var,upd)
-        table.insert(getgenv().UtilityStorage, getTime()..": Updated tamper variables.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Updated tamper variables.")
         AntiTamper[var] = upd
     end
 
     checkTamper = function(vars)
-        table.insert(getgenv().UtilityStorage, getTime()..": Tamper check started.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Tamper check started.")
         local Tampered = false
         for i, v in vars do
             if not (AntiTamper[i] == v and v == vars[i]) then
-                table.insert(getgenv().UtilityStorage, getTime()..": The variables were tampered with.")
+                table.insert(getgenv().BetterUtilityStorage, getTime()..": The variables were tampered with.")
                 Tampered = true
             end
         end
@@ -449,12 +478,12 @@ end)
     end
     
     uload =  function(x)
-        table.insert(getgenv().UtilityStorage, getTime()..": uload used for link: "..x..".")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": uload used for link: "..x..".")
         return loadstring(readfile(x))
     end
     
     headshot = function(id) 
-        table.insert(getgenv().UtilityStorage, getTime()..": Headshot used for UID: "..tostring(id)..".")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Headshot used for UID: "..tostring(id)..".")
         local HeadShot = Players:GetUserThumbnailAsync(id, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
         return HeadShot
     end
@@ -463,30 +492,30 @@ end)
 
         if ret ~= nil then
             if ret then
-                return getgenv().UtilityStorage
+                return getgenv().BetterUtilityStorage
             end
         end
 
-        for i,v in next, getgenv().UtilityStorage do
+        for i,v in next, getgenv().BetterUtilityStorage do
             dbgprint(v)
         end
 
     end
 
     antiskid = function(scOwner,scValue)
-        table.insert(getgenv().UtilityStorage, getTime()..": Anti-Skid Protection Ran.")
+        table.insert(getgenv().BetterUtilityStorage, getTime()..": Anti-Skid Protection Ran.")
 
         if scValue ~= scOwner then
 
             task.spawn(function()
                 while task.wait() do
-                    NukeUtility()
+                    DisableUtility()
                 end
             end)
 
             task.wait(2)
 
-            LocalPlayer:Kick("❎ THE OWNER OF THIS SCRIPT IS A SKID ❎ [Kicked by Utility Anti-Skid]")
+            LocalPlayer:Kick("Player tampered with script [Kicked by BetterUtility Anti-Skid]")
 
         end
     end
@@ -499,7 +528,7 @@ end)
 
     end
 
-    jump = function(val : number)
+    jump = function(val)
         
         if Humanoid then
             Humanoid.JumpPower = val
@@ -552,95 +581,48 @@ end)
     
     runtests = function()
         dbgprint("")
-        table.insert(getgenv().UtilityStorage, getTime()..": Started compatibility test.")
+        
 
-        local testfuncs = {
-            {hook, "Local Hooking"},
-            {unhook, "Local Unhooking"},
-            {remotescan, "Remote Scanner"},
-            {key, "Key System"},
-            {prompt, "Prompt Library"},
-            {notification, "Notification Library"},
-            {headshot, "Player Headshots"},
-            {logs, "Utility Logger"},
-            {speed, "Humanoid Properties"},
-            {jump, "Humanoid Properties x2"},
-            {swim, "Humanoid Properties x3"}
-            {unc, "UNC Tests"},
-            {iy, "Infinite Yield"},
-            {fromhex, "Hex Conversions"}
-        }
-
-        for _, v in next, testfuncs do
-            if v[1] == nil then
-                dbgprint("❎ "..v[2].." not found.")
-            else
-                dbgprint("✅ "..v[2].." found.")
-            end
-        end
-
-        if antiskid ~= nil then dbgprint("✅ antiskid function") else dbgprint("❎ antiskid function") 
+        if antiskid ~= nil then dbgprint("✅ antiskid function") else dbgprint("⛔ antiskid function") 
             task.spawn(function()  
                 while task.wait(1) do
-                    NukeUtility()
+                    DisableUtility()
                 end
             end)
             task.wait(2)
-            LocalPlayer:Kick("⚠️ THIS SKID THOUGHT HE COULD BYPASS ANTISKID? ⚠️")
+            LocalPlayer:Kick("Attempted to bypass a Anti-Skid method-check.")
         end
 
-        if NukeUtility ~= nil then dbgprint("✅ NukeUtility function") else dbgprint("❎ NukeUtility function") 
+        if DisableUtility() ~= nil then dbgprint("✅ DisableUtility function") else dbgprint("❎ DisableUtility() function") 
             task.spawn(function()  
                 while task.wait(1) do
-                    NukeUtility()
+                    DisableUtility()
                 end
             end)
             task.wait(2)
-            LocalPlayer:Kick("⚠️ THIS SKID THOUGHT HE COULD BYPASS ANTISKID? ⚠️")
+            LocalPlayer:Kick("Attempted to bypass a Anti-Skid method check.")
         end
 
         if checkTamper ~= nil and updateTamper ~= nil and registerTampers ~= nil then dbgprint("✅ Tamper functions") else dbgprint("❎ Tamper functions") 
             task.spawn(function()  
                 while task.wait(1) do
-                    NukeUtility()
+                    DisableUtility()
                 end
             end)
             task.wait(2)
-            LocalPlayer:Kick("⚠️ THIS SKID THOUGHT HE COULD BYPASS ANTISKID? ⚠️")
+            LocalPlayer:Kick("Attempted to bypass a Anti-Skid method check.")
         end
+         getgenv().BetterUtilityStorage = true
 
-        table.insert(getgenv().UtilityStorage, getTime() .. ": Finished compatibility test.")
+        dbgprint" Finished compatibility test."
     end
 
-    -- Final Anti-Skid measures (unbypassable?)
-
-    task.spawn(function()
-        while task.wait(10) do
-            if antiskid == nil or NukeUtility == nil or test == nil or checkTamper == nil or updateTamper == nil or registerTampers == nil then
-                getgenv().UtilityLoaded = nil
-                getgenv().UtilityStorage = nil
-                getgenv().Hooks = nil
-                getgenv().Remotes = {}
-                getTime = nil
-                hook = nil
-                unhook = nil
-                remotescan = nil
-                key = nil
-                prompt = nil
-                notification = nil
-                uload = nil
-                headshot = nil
-                logs = nil
-                test = nil
-                task.wait(2)
-                LocalPlayer:Kick("⚠️ THIS SKID THOUGHT HE COULD BYPASS ANTISKID? ⚠️")
-            end
-        end
-    end)
+    getgenv().BetterUtilityStorage = true
     
-    table.insert(getgenv().UtilityStorage, getTime()..": Utility loaded.")
+-- Removed anti-skid measures which actually bugged out
+    
+    dbgprint"BetterUtility loaded."
 
     runtests()
 
-    getgenv().UtilityLoaded = true
-end
+    getgenv().BetterUtilityLoaded = true
