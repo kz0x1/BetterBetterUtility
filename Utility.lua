@@ -5,7 +5,7 @@ originalidentifyexecutor = identifyexecutor()
 
  assert(true, warn("Running BetterUtility v3.0.3, Executor: "..identifyexecutor()))
  identifyexecutor = newcclosure(function()
-		return "BetterUtility", "3.0.2"
+		return "BetterUtility", "3.0.0"
 end)
 
  function LoadIndependencies() -- Will be needed.
