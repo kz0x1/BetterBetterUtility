@@ -5,7 +5,7 @@ getTime = function()
     local hour = CurgetTime.hour
     local minute = CurgetTime.min
     local second = CurgetTime.sec
-    return "["..hour..":"..minute..":"..second.."]"
+    return "[BBU @ "..hour..":"..minute..":"..second.."]"
 end
  
 
