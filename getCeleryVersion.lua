@@ -5,3 +5,8 @@ local GHDecode = HttpService:JSONDecode(GHRelease)
 getCeleryVersion = function()
   return GHDecode.tag_name
 end
+
+printCeleryVersion = function()
+  print(getCeleryVersion())
+end
+-- added cuz why not!
